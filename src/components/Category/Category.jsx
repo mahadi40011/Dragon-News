@@ -11,8 +11,8 @@ const Category = () => {
       className={({ isActive }) =>
         ` border-0  text-start py-2.5 pl-10 text-accent ${
           isActive
-            ? "bg-base-300 rounded-md"
-            : "hover:bg-base-200 hover:font-medium rounded-md"
+            ? "bg-base-300 rounded-md font-bold"
+            : "hover:bg-base-200 hover:font-semibold rounded-md"
         }`
       }
       key={category.id}
