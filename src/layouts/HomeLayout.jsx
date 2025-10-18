@@ -1,12 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router';
+import Header from '../components/Header/Header';
 
 const HomeLayout = () => {
   return (
     <div>
-      <header>
-        <h3>hello from home layout</h3>
-      </header>
+      <Header/>
       <main>
         <section className="left-aside"></section>
         <section className="main">
