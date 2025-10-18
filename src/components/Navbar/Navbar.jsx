@@ -13,7 +13,7 @@ const Navbar = () => {
     <NavLink
       className={({ isActive }) =>
         `text-accent m-2 font-semibold pb-1 ${
-          isActive ? "border-b-2 border-accent" : ""
+          isActive ? "border-b-2 border-accent" : "hover:border-b border-accent"
         }`
       }
       key={navItem.id}
@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="absolute left-1/2 -translate-x-1/2">{navItems}</div>
       <div className="flex gap-3">
         <img src={user} alt="" />
-        <button className="btn btn-primary">Login</button>
+        <button className="btn btn-primary px-6">Login</button>
       </div>
     </div>
   );

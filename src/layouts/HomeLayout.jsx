@@ -1,10 +1,10 @@
-import React from 'react';
-import { Outlet } from 'react-router';
-import Header from '../components/Header/Header';
-import LatestNews from '../components/LatestNews/LatestNews';
-import Navbar from '../components/Navbar/Navbar';
-import LeftAside from '../components/HomeComponents/LeftAside';
-import RightAside from '../components/HomeComponents/RightAside';
+import React from "react";
+import { Outlet } from "react-router";
+import Header from "../components/Header/Header";
+import LatestNews from "../components/LatestNews/LatestNews";
+import Navbar from "../components/Navbar/Navbar";
+import LeftAside from "../components/HomeComponents/LeftAside/LeftAside";
+import RightAside from "../components/HomeComponents/RightAside/RightAside";
 
 const HomeLayout = () => {
   return (
@@ -17,13 +17,13 @@ const HomeLayout = () => {
         <Navbar />
       </nav>
       <main className="my-container grid grid-cols-12 gap-6 mt-16">
-        <aside className='col-span-3'>
+        <aside className="col-span-3">
           <LeftAside />
         </aside>
         <section className="main col-span-6">
           <Outlet />
         </section>
-        <aside className='col-span-3'>
+        <aside className="col-span-3">
           <RightAside />
         </aside>
       </main>
