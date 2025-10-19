@@ -22,15 +22,15 @@ const NewsCard = ({ news }) => {
   return (
     <div className="bg-base-100 rounded-xl shadow-sm mb-5">
       {/* Header */}
-      <div className="flex justify-between items-center bg-base-200 p-2 mb-2">
+      <div className="flex justify-between items-center rounded-t-xl bg-base-200 p-2 mb-2">
         <div className="flex items-center gap-3">
           <img
             src={author.img}
             alt={author.name}
-            className="w-10 h-10 rounded-full"
+            className="w-10 h-10 rounded-full cursor-pointer"
           />
           <div>
-            <h3 className="font-semibold text-sm">{author.name}</h3>
+            <h3 className="font-semibold text-sm hover:underline cursor-pointer">{author.name}</h3>
             <p className="text-xs text-gray-500">{date}</p>
           </div>
         </div>
@@ -68,13 +68,13 @@ const NewsCard = ({ news }) => {
         </p>
 
         <div className="mt-3 text-xs text-gray-400">
-          <span className="font-medium text-gray-500">Tags:</span>{" "}
+          <span className="font-medium text-gray-500">Tags:</span>{"  "}
           {tags.join(", ")}
         </div>
       </div>
 
       {/* Footer */}
-      <div className="flex justify-between items-center border-t px-4 py-3">
+      <div className="flex justify-between items-center border-t border-gray-300 px-4 py-3">
         <div className="flex items-center gap-1 text-orange-400">
           {Array.from({ length: rating.number }, (_, i) => (
             <FaStar key={i} />
