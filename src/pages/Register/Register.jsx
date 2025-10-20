@@ -3,8 +3,25 @@ import { Link } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 
 const Register = () => {
-const userInfo = use(AuthContext)
-console.log(userInfo);
+const { createUser } = use(AuthContext);
+  
+  const handleRegister = (e) => {
+    e.preventDefault()
+    // const displayName = e.target.name.value;
+    // const photoURL = e.target.photo.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    
+    createUser(email, password)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-71px)] my-15 text-gray-800">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 h-fit">
@@ -12,39 +29,46 @@ console.log(userInfo);
           Register your account
         </h1>
         <hr className="my-container text-gray-200" />
-        <div className="card-body">
-          <form>
+        <form onSubmit={handleRegister} className="card-body">
             <fieldset className="fieldset mb-4">
               {/* name */}
               <label className="label">Name</label>
               <input
                 type="text"
+                name='name'
                 className="input w-full"
                 placeholder="Name"
+                required
               />
               {/* Photo */}
               <label className="label">Photo URL</label>
               <input
                 type="text"
+                name='photo'
                 className="input w-full"
                 placeholder="Photo URL"
+                required
               />
               {/* email */}
               <label className="label">Email</label>
               <input
                 type="email"
+                name='email'
                 className="input w-full"
                 placeholder="Email"
+                required
               />
 
               {/* password */}
               <label className="label">Password</label>
               <input
                 type="password"
+                name='password'
                 className="input w-full"
                 placeholder="Password"
+                required
               />
-              <button className="btn btn-primary mt-4">Register</button>
+              <button type='submit' className="btn btn-primary mt-4">Register</button>
             </fieldset>
 
             <div className=" text-center">
@@ -58,8 +82,7 @@ console.log(userInfo);
                 </Link>
               </span>
             </div>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
   );
