@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../../context/AuthContext';
 
 const Register = () => {
+const userInfo = use(AuthContext)
+console.log(userInfo);
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-71px)] my-15 text-gray-800">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 h-fit">
