@@ -37,10 +37,10 @@ const Navbar = () => {
   };
   return (
     <div className="relative flex justify-between items-center mt-5">
-      <div className="">{user && <p>{user.email}</p>}</div>
+      <div className="font-bold text-3xl">{user && <p>{user.displayName}</p>}</div>
       <div className="absolute left-1/2 -translate-x-1/2">{navItems}</div>
       <div className="flex gap-3">
-        <img src={userIcon} alt="" />
+        <img className="w-12 rounded-full" src={user ? user.photoURL : userIcon} alt="" />
         {user ? (
           <button
             type="button"
