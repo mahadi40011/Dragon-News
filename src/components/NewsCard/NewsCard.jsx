@@ -30,7 +30,9 @@ const NewsCard = ({ news }) => {
             className="w-10 h-10 rounded-full cursor-pointer"
           />
           <div>
-            <h3 className="font-semibold text-sm hover:underline cursor-pointer">{author.name}</h3>
+            <h3 className="font-semibold text-sm hover:underline cursor-pointer">
+              {author.name}
+            </h3>
             <p className="text-xs text-gray-500">{date}</p>
           </div>
         </div>
@@ -60,7 +62,7 @@ const NewsCard = ({ news }) => {
         <p>
           {details.slice(0, 200)}...
           <Link
-            to={`/news/${id}`}
+            to={`/news-details/${id}`}
             className="text-orange-500 font-semibold hover:underline ml-1"
           >
             Read More
@@ -68,7 +70,8 @@ const NewsCard = ({ news }) => {
         </p>
 
         <div className="mt-3 text-xs text-gray-400">
-          <span className="font-medium text-gray-500">Tags:</span>{"  "}
+          <span className="font-medium text-gray-500">Tags:</span>
+          {"  "}
           {tags.join(", ")}
         </div>
       </div>
