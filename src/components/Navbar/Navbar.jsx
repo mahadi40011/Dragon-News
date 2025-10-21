@@ -1,8 +1,12 @@
-import React from "react";
-import { Link, NavLink } from "react-router";
-import user from "../../assets/user.png"
+import React, { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import userIcon from "../../assets/user.png";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
+  const { user, logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate()
+
   const navLink = [
     { id: 1, path: "/", name: "Home" },
     { id: 2, path: "/about", name: "About" },
@@ -22,13 +26,43 @@ const Navbar = () => {
       {navItem.name}
     </NavLink>
   ));
+
+  const handleLogOut = () => {
+    logOutUser()
+      .then((res) => {
+        console.log(res);
+        navigate('/auth/login')
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="relative flex justify-between items-center mt-5">
-      <div className=""></div>
+      <div className="">
+        {
+          user && <p>{user.email}</p>
+        }
+      </div>
       <div className="absolute left-1/2 -translate-x-1/2">{navItems}</div>
       <div className="flex gap-3">
-        <img src={user} alt="" />
-        <Link to={"/auth/login"} className="btn btn-primary px-6">Login</Link>
+        <img src={userIcon} alt="" />
+        {user ? (
+          <button
+            type="button"
+            onClick={handleLogOut}
+            className="btn btn-primary px-6"
+          >
+            LogOut
+          </button>
+        ) : (
+          <Link
+            to={"/auth/login"}
+            className="btn btn-primary px-6"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
