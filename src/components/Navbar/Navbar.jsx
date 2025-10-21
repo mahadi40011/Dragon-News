@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router";
+import { Link, NavLink } from "react-router";
 import userIcon from "../../assets/user.png";
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(AuthContext);
-  const navigate = useNavigate()
 
   const navLink = [
-    { id: 1, path: "/", name: "Home" },
+    { id: 1, path: "/category/1", name: "Home" },
     { id: 2, path: "/about", name: "About" },
     { id: 3, path: "/career", name: "Career" },
   ];
@@ -31,7 +30,6 @@ const Navbar = () => {
     logOutUser()
       .then((res) => {
         console.log(res);
-        navigate('/auth/login')
       })
       .catch((err) => {
         console.log(err);
@@ -39,11 +37,7 @@ const Navbar = () => {
   };
   return (
     <div className="relative flex justify-between items-center mt-5">
-      <div className="">
-        {
-          user && <p>{user.email}</p>
-        }
-      </div>
+      <div className="">{user && <p>{user.email}</p>}</div>
       <div className="absolute left-1/2 -translate-x-1/2">{navItems}</div>
       <div className="flex gap-3">
         <img src={userIcon} alt="" />
@@ -56,10 +50,7 @@ const Navbar = () => {
             LogOut
           </button>
         ) : (
-          <Link
-            to={"/auth/login"}
-            className="btn btn-primary px-6"
-          >
+          <Link to={"/auth/login"} className="btn btn-primary px-6">
             Login
           </Link>
         )}

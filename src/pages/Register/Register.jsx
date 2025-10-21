@@ -1,26 +1,26 @@
-import React, { use } from 'react';
-import { Link } from 'react-router';
-import { AuthContext } from '../../context/AuthContext';
+import React, { use } from "react";
+import { Link } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
-const { createUser } = use(AuthContext);
-  
+  const { createUser, setLoading } = use(AuthContext);
+
   const handleRegister = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // const displayName = e.target.name.value;
     // const photoURL = e.target.photo.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    
+
     createUser(email, password)
       .then((res) => {
+        setLoading(false);
         console.log(res);
       })
       .catch((err) => {
         console.log(err);
       });
-  }
-
+  };
 
   return (
     <div className="flex justify-center items-center min-h-[calc(100vh-71px)] my-15 text-gray-800">
@@ -30,58 +30,60 @@ const { createUser } = use(AuthContext);
         </h1>
         <hr className="my-container text-gray-200" />
         <form onSubmit={handleRegister} className="card-body">
-            <fieldset className="fieldset mb-4">
-              {/* name */}
-              <label className="label">Name</label>
-              <input
-                type="text"
-                name='name'
-                className="input w-full"
-                placeholder="Name"
-                required
-              />
-              {/* Photo */}
-              <label className="label">Photo URL</label>
-              <input
-                type="text"
-                name='photo'
-                className="input w-full"
-                placeholder="Photo URL"
-                required
-              />
-              {/* email */}
-              <label className="label">Email</label>
-              <input
-                type="email"
-                name='email'
-                className="input w-full"
-                placeholder="Email"
-                required
-              />
+          <fieldset className="fieldset mb-4">
+            {/* name */}
+            <label className="label">Name</label>
+            <input
+              type="text"
+              name="name"
+              className="input w-full"
+              placeholder="Name"
+              required
+            />
+            {/* Photo */}
+            <label className="label">Photo URL</label>
+            <input
+              type="text"
+              name="photo"
+              className="input w-full"
+              placeholder="Photo URL"
+              required
+            />
+            {/* email */}
+            <label className="label">Email</label>
+            <input
+              type="email"
+              name="email"
+              className="input w-full"
+              placeholder="Email"
+              required
+            />
 
-              {/* password */}
-              <label className="label">Password</label>
-              <input
-                type="password"
-                name='password'
-                className="input w-full"
-                placeholder="Password"
-                required
-              />
-              <button type='submit' className="btn btn-primary mt-4">Register</button>
-            </fieldset>
+            {/* password */}
+            <label className="label">Password</label>
+            <input
+              type="password"
+              name="password"
+              className="input w-full"
+              placeholder="Password"
+              required
+            />
+            <button type="submit" className="btn btn-primary mt-4">
+              Register
+            </button>
+          </fieldset>
 
-            <div className=" text-center">
-              <span>
-                Already have an Account?{" "}
-                <Link
-                  className="text-secondary hover:underline"
-                  to={"/auth/login"}
-                >
-                  Login
-                </Link>
-              </span>
-            </div>
+          <div className=" text-center">
+            <span>
+              Already have an Account?{" "}
+              <Link
+                className="text-secondary hover:underline"
+                to={"/auth/login"}
+              >
+                Login
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
     </div>
