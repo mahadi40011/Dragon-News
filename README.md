@@ -6,7 +6,7 @@ It features Firebase Authentication, React Router v7, and several popular librar
 ---
 
 ## 🚀 Live Demo
-🔗 [Visit Live Site](dragon-news-47f6b.web.app)
+🔗 [Visit Live Site](https://dragon-news-47f6b.web.app)
 
 ---
 
